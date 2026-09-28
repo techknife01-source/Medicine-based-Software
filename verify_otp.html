@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Verify Mobile Number | Homeo</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef8f0, #dff2e4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 430px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 35px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.10);
+            text-align: center;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #e8f6eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        h2 {
+            color: #1b5e20;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .otp-label {
+            display: block;
+            text-align: left;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .otp-input {
+            width: 100%;
+            height: 55px;
+            border: 2px solid #d7d7d7;
+            border-radius: 10px;
+            outline: none;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            transition: 0.3s;
+        }
+
+        .otp-input:focus {
+            border-color: #2e7d32;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+        }
+
+        .otp-input::placeholder {
+            letter-spacing: 1px;
+            font-size: 15px;
+            font-weight: normal;
+        }
+
+        .verify-btn {
+            width: 100%;
+            height: 52px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 10px;
+            background: #2e7d32;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .verify-btn:hover {
+            background: #1b5e20;
+            transform: translateY(-1px);
+        }
+
+        .resend-text {
+            margin-top: 25px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .resend-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .resend-link:hover {
+            text-decoration: underline;
+        }
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .message {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .security {
+            margin-top: 25px;
+            padding-top: 18px;
+            border-top: 1px solid #eeeeee;
+            color: #888;
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 22px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="logo">
+            📱
+        </div>
+
+        <h2>Verify Your Mobile</h2>
+
+        <p class="subtitle">
+            We've sent a 6-digit verification code to your mobile number.
+            Enter the code below to continue.
+        </p>
+
+        <!-- Flask Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="message">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+
+            <label class="otp-label" for="otp">
+                Enter OTP
+            </label>
+
+            <input
+                class="otp-input"
+                type="text"
+                id="otp"
+                name="otp"
+                maxlength="6"
+                minlength="6"
+                pattern="[0-9]{6}"
+                inputmode="numeric"
+                autocomplete="one-time-code"
+                placeholder="6-digit OTP"
+                required
+            >
+
+            <button class="verify-btn" type="submit">
+                Verify Mobile Number
+            </button>
+
+        </form>
+
+        <div class="resend-text">
+            Didn't receive the OTP?
+        </div>
+
+        <a class="resend-link" href="/resend-otp">
+            Resend OTP
+        </a>
+
+        <div class="security">
+            🔒 Your verification code is securely processed.
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

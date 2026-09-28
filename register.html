@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Homeo</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(124, 199, 139, 0.92),
+                                rgba(226, 244, 231, 0.96)),
+                #eaf6ed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 15px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* ---------------- BRAND ---------------- */
+
+        .brand {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .brand-icon {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 10px;
+            background: #f8f9f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .brand h1 {
+            font-size: 30px;
+            color: #1b5e20;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .brand p {
+            color: #66806b;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        /* ---------------- CARD ---------------- */
+
+        .register-card {
+            background: #ecede8;
+            padding: 36px;
+            border-radius: 20px;
+            box-shadow: 0 15px 45px rgba(27, 94, 32, 0.12);
+            border: 1px solid #edf3ee;
+        }
+
+        .register-card h2 {
+            text-align: center;
+            color: #074217d2;
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* ---------------- FLASH MESSAGE ---------------- */
+
+        .message {
+            padding: 11px 13px;
+            margin-bottom: 15px;
+            background: #fff8df;
+            border: 1px solid #f1dfa1;
+            color: #735d13;
+            border-radius: 9px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        /* ---------------- FORM ---------------- */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #065e1f;
+        }
+
+        .required {
+            color: #d32f2f;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1.5px solid #d9e1da;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+            color: #333;
+            background: #fcfdfc;
+            transition: all 0.25s ease;
+        }
+
+        input:hover,
+        textarea:hover {
+            border-color: #a8c5ad;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #2e7d32;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.10);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #aaa;
+        }
+
+        textarea {
+            min-height: 95px;
+            resize: vertical;
+        }
+
+        .mobile-note,
+        .password-note {
+            font-size: 12px;
+            color: #7b7b7b;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        /* ---------------- PASSWORD ---------------- */
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 50px;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 18px;
+            color: #777;
+        }
+
+        /* ---------------- BUTTON ---------------- */
+
+        .register-btn {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            background: #2e7d32;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 5px;
+            box-shadow: 0 5px 14px rgba(46, 125, 50, 0.20);
+        }
+
+        .register-btn:hover {
+            background: #1b5e20;
+            transform: translateY(-1px);
+            box-shadow: 0 7px 18px rgba(46, 125, 50, 0.25);
+        }
+
+        .register-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ---------------- LOGIN ---------------- */
+
+        .login-section {
+            text-align: center;
+            margin-top: 23px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .login-section a {
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .login-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------------- TERMS ---------------- */
+
+        .terms {
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            margin-top: 18px;
+            line-height: 1.6;
+        }
+
+        .terms a {
+            color: #2e7d32;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------------- SECURITY ---------------- */
+
+        .security {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            margin-top: 20px;
+            padding-top: 17px;
+            border-top: 1px solid #eeeeee;
+            color: #777;
+            font-size: 12px;
+        }
+
+        /* ---------------- MOBILE ---------------- */
+
+        @media (max-width: 520px) {
+
+            body {
+                padding: 20px 12px;
+            }
+
+            .register-card {
+                padding: 27px 20px;
+                border-radius: 16px;
+            }
+
+            .brand h1 {
+                font-size: 26px;
+            }
+
+            .register-card h2 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= BRAND ================= -->
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🌿
+        </div>
+
+        <h1>Homeo</h1>
+
+        <p>
+            Natural Healthcare & Wellness
+        </p>
+
+    </div>
+
+
+    <!-- ================= REGISTER CARD ================= -->
+
+    <div class="register-card">
+
+        <h2>Create Your Account</h2>
+
+        <p class="subtitle">
+            Register with Homeo to order medicines, manage your profile,
+            and track your orders easily.
+        </p>
+
+
+        <!-- ================= FLASH MESSAGES ================= -->
+
+        {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="message">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        <!-- ================= REGISTRATION FORM ================= -->
+
+        <form method="POST">
+
+
+            <!-- FULL NAME -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Full Name <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address <span class="required">*</span>
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="example@email.com"
+                    autocomplete="email"
+                    required
+                >
+
+            </div>
+
+
+            <!-- MOBILE -->
+
+            <div class="form-group">
+
+                <label for="mobile">
+                    Mobile Number <span class="required">*</span>
+                </label>
+
+                <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    placeholder="+919876543210"
+                    autocomplete="tel"
+                    pattern="[+][0-9]{10,15}"
+                    inputmode="tel"
+                    required
+                >
+
+                <div class="mobile-note">
+                    📱 Enter your mobile number with country code.
+                    A 6-digit OTP will be sent for verification.
+                </div>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password <span class="required">*</span>
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a strong password"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="show-password"
+                        onclick="togglePassword()"
+                        aria-label="Show or hide password"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+                <div class="password-note">
+                    🔒 Password must contain at least 8 characters.
+                </div>
+
+            </div>
+
+
+            <!-- ADDRESS -->
+
+            <div class="form-group">
+
+                <label for="address">
+                    Delivery Address <span class="required">*</span>
+                </label>
+
+                <textarea
+                    id="address"
+                    name="address"
+                    placeholder="Enter your complete delivery address"
+                    autocomplete="street-address"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- REGISTER BUTTON -->
+
+            <button
+                type="submit"
+                class="register-btn"
+            >
+                Create Account & Verify Mobile
+            </button>
+
+        </form>
+
+
+        <!-- ================= LOGIN ================= -->
+
+        <div class="login-section">
+
+            Already have an account?
+
+            <a href="{{ url_for('login') }}">
+                Login here
+            </a>
+
+        </div>
+
+
+        <!-- ================= TERMS ================= -->
+
+        <div class="terms">
+
+            By creating an account, you agree to our
+
+            <a href="#">
+                Terms & Conditions
+            </a>
+
+            and
+
+            <a href="#">
+                Privacy Policy
+            </a>.
+
+        </div>
+
+
+        <!-- ================= SECURITY ================= -->
+
+        <div class="security">
+            🔐 Your information is securely protected.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= PASSWORD SCRIPT ================= -->
+
+<script>
+
+function togglePassword() {
+
+    const password = document.getElementById("password");
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+    } else {
+
+        password.type = "password";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

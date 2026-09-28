@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Account | Homeo</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background: #f4f8f5;
+
+            color: #333;
+
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .header {
+
+            height: 72px;
+
+            background: #dcedb2;
+
+            border-bottom: 1px solid #dbf8be;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+
+        }
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            text-decoration: none;
+
+        }
+
+
+        .logo-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 50%;
+
+            background: #e8f5e9;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 22px;
+
+        }
+
+
+        .logo-text {
+
+            color: #1b5e20;
+
+            font-size: 24px;
+
+            font-weight: 700;
+
+        }
+
+
+        .header-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .welcome-small {
+
+            color: #666;
+
+            font-size: 14px;
+
+        }
+
+
+        .logout-btn {
+
+            padding: 9px 17px;
+
+            border-radius: 8px;
+
+            border: 1px solid #d5e2d7;
+
+            background: #ffffff;
+
+            color: #2e7d32;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+
+        }
+
+
+        .logout-btn:hover {
+
+            background: #2e7d32;
+
+            color: white;
+
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .main {
+
+            width: 100%;
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 35px 20px 50px;
+
+        }
+
+
+        /* ================= WELCOME ================= */
+
+        .welcome-card {
+
+            background: linear-gradient(
+                135deg,
+                #2e7d32,
+                #43a047
+            );
+
+            color: white;
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 10px 25px rgba(46,125,50,0.18);
+
+        }
+
+
+        .welcome-card h1 {
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .welcome-card p {
+
+            font-size: 14px;
+
+            opacity: 0.92;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* ================= QUICK ACTIONS ================= */
+
+        .section-title {
+
+            font-size: 20px;
+
+            color: #222;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .quick-actions {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .action-card {
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 20px;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            color: #333;
+
+            border: 1px solid #e7ece8;
+
+            transition: 0.25s;
+
+        }
+
+
+        .action-card:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,0.07);
+
+            border-color: #b9d6bc;
+
+        }
+
+
+        .action-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            margin: 0 auto 10px;
+
+            border-radius: 50%;
+
+            background: #e8f5e9;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 24px;
+
+        }
+
+
+        .action-card h3 {
+
+            font-size: 15px;
+
+            margin-bottom: 5px;
+
+            color: #333;
+
+        }
+
+
+        .action-card p {
+
+            font-size: 12px;
+
+            color: #888;
+
+        }
+
+
+        /* ================= CONTENT GRID ================= */
+
+        .content-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 20px;
+
+        }
+
+
+        .card {
+
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 25px;
+
+            border: 1px solid #e6ece7;
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.04);
+
+        }
+
+
+        .card-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+            padding-bottom: 13px;
+
+            border-bottom: 1px solid #eeeeee;
+
+        }
+
+
+        .card-header h2 {
+
+            font-size: 18px;
+
+            color: #222;
+
+        }
+
+
+        .card-header span {
+
+            font-size: 22px;
+
+        }
+
+
+        /* ================= PROFILE ================= */
+
+        .profile-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #f0f0f0;
+
+        }
+
+
+        .profile-row:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .profile-label {
+
+            color: #888;
+
+            font-size: 13px;
+
+        }
+
+
+        .profile-value {
+
+            color: #333;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            text-align: right;
+
+            word-break: break-word;
+
+        }
+
+
+        /* ================= VERIFIED ================= */
+
+        .verified {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            background: #e8f5e9;
+
+            color: #2e7d32;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* ================= ACCOUNT LINKS ================= */
+
+        .account-links {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+        }
+
+
+        .account-link {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 13px 14px;
+
+            border-radius: 9px;
+
+            background: #f8faf8;
+
+            text-decoration: none;
+
+            color: #333;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+
+        }
+
+
+        .account-link:hover {
+
+            background: #e8f5e9;
+
+            color: #1b5e20;
+
+        }
+
+
+        .arrow {
+
+            color: #2e7d32;
+
+            font-weight: bold;
+
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        .footer {
+
+            text-align: center;
+
+            padding: 25px;
+
+            color: #888;
+
+            font-size: 12px;
+
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
+
+            .quick-actions {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .header {
+
+                padding: 0 15px;
+
+            }
+
+
+            .welcome-small {
+
+                display: none;
+
+            }
+
+
+            .main {
+
+                padding: 25px 14px 40px;
+
+            }
+
+
+            .welcome-card {
+
+                padding: 25px 20px;
+
+            }
+
+
+            .welcome-card h1 {
+
+                font-size: 23px;
+
+            }
+
+
+            .content-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 430px) {
+
+            .quick-actions {
+
+                grid-template-columns: 1fr 1fr;
+
+                gap: 10px;
+
+            }
+
+
+            .action-card {
+
+                padding: 15px 8px;
+
+            }
+
+
+            .action-card h3 {
+
+                font-size: 13px;
+
+            }
+
+
+            .logo-text {
+
+                font-size: 21px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <a href="#" class="logo">
+
+        <div class="logo-icon">
+            🌿
+        </div>
+
+        <div class="logo-text">
+            Homeo
+        </div>
+
+    </a>
+
+
+    <div class="header-right">
+
+        <span class="welcome-small">
+            Welcome, Sangita
+        </span>
+
+        <a href="/logout" class="logout-btn">
+            Logout
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome-card">
+
+        <h1>
+            Welcome, Sangita 👋
+        </h1>
+
+        <p>
+            Welcome to your Homeo account.
+            Manage your profile, orders, prescriptions,
+            and shopping activity from here.
+        </p>
+
+    </section>
+
+
+
+    <!-- ================= QUICK ACTIONS ================= -->
+
+    <h2 class="section-title">
+        Quick Actions
+    </h2>
+
+
+    <div class="quick-actions">
+
+
+        <a href="#" class="action-card">
+
+            <div class="action-icon">
+                🛍️
+            </div>
+
+            <h3>
+                Shop Medicines
+            </h3>
+
+            <p>
+                Browse our products
+            </p>
+
+        </a>
+
+
+        <a href="#" class="action-card">
+
+            <div class="action-icon">
+                📦
+            </div>
+
+            <h3>
+                My Orders
+            </h3>
+
+            <p>
+                View your orders
+            </p>
+
+        </a>
+
+
+        <a href="#" class="action-card">
+
+            <div class="action-icon">
+                ❤️
+            </div>
+
+            <h3>
+                Wishlist
+            </h3>
+
+            <p>
+                Saved products
+            </p>
+
+        </a>
+
+
+        <a href="#" class="action-card">
+
+            <div class="action-icon">
+                📄
+            </div>
+
+            <h3>
+                Prescription
+            </h3>
+
+            <p>
+                Upload prescription
+            </p>
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- ================= INFORMATION ================= -->
+
+    <div class="content-grid">
+
+
+        <!-- PROFILE -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>
+                    My Profile
+                </h2>
+
+                <span>
+                    👤
+                </span>
+
+            </div>
+
+
+            <div class="profile-row">
+
+                <span class="profile-label">
+                    Full Name
+                </span>
+
+                <span class="profile-value">
+                    {{ customer.name }}
+                </span>
+
+            </div>
+
+
+            <div class="profile-row">
+
+                <span class="profile-label">
+                    Email
+                </span>
+
+                <span class="profile-value">
+                    {{ customer.email }}
+                </span>
+
+            </div>
+
+
+            <div class="profile-row">
+
+                <span class="profile-label">
+                    Mobile
+                </span>
+
+                <span class="profile-value">
+                    {{ customer.mobile }}
+                </span>
+
+            </div>
+
+
+            <div class="profile-row">
+
+                <span class="profile-label">
+                    Mobile Status
+                </span>
+
+                <span class="profile-value">
+
+                    <span class="verified">
+                        ✓ Verified
+                    </span>
+
+                </span>
+
+            </div>
+
+
+            <div class="profile-row">
+
+                <span class="profile-label">
+                    Delivery Address
+                </span>
+
+                <span class="profile-value">
+                    {{ customer.address }}
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ACCOUNT -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>
+                    Account Settings
+                </h2>
+
+                <span>
+                    ⚙️
+                </span>
+
+            </div>
+
+
+            <div class="account-links">
+
+
+                <a href="#" class="account-link">
+
+                    <span>
+                        👤 Edit Profile
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="account-link">
+
+                    <span>
+                        🔑 Change Password
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="account-link">
+
+                    <span>
+                        📍 Manage Addresses
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="account-link">
+
+                    <span>
+                        📋 Order History
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="account-link">
+
+                    <span>
+                        📄 My Prescriptions
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    © 2026 Homeo. All rights reserved.
+
+</footer>
+
+
+</body>
+
+</html>
