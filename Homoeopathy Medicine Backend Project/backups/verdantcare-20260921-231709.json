@@ -1,0 +1,403 @@
+[
+{
+  "model": "store.doctor",
+  "pk": 1,
+  "fields": {
+    "name": "Ananya Mehta",
+    "specialty": "Classical Homoeopathy",
+    "qualification": "",
+    "bio": "Thoughtful, evidence-informed homoeopathic consultations.",
+    "experience_years": 12,
+    "consultation_fee": "800.00",
+    "available": true,
+    "created_at": "2026-09-21T16:13:40.040Z"
+  }
+},
+{
+  "model": "store.doctor",
+  "pk": 2,
+  "fields": {
+    "name": "Rohan Kapoor",
+    "specialty": "Child Wellness",
+    "qualification": "",
+    "bio": "Thoughtful, evidence-informed homoeopathic consultations.",
+    "experience_years": 9,
+    "consultation_fee": "650.00",
+    "available": true,
+    "created_at": "2026-09-21T16:13:40.055Z"
+  }
+},
+{
+  "model": "store.doctor",
+  "pk": 3,
+  "fields": {
+    "name": "Ishita Sen",
+    "specialty": "Women's Health",
+    "qualification": "",
+    "bio": "Thoughtful, evidence-informed homoeopathic consultations.",
+    "experience_years": 15,
+    "consultation_fee": "900.00",
+    "available": true,
+    "created_at": "2026-09-21T16:13:40.074Z"
+  }
+},
+{
+  "model": "store.medicine",
+  "pk": 1,
+  "fields": {
+    "name": "Arnica Montana 30C",
+    "category": "First Aid",
+    "description": "Carefully prepared homoeopathic medicine from our trusted dispensary.",
+    "price": "180.00",
+    "discount_percent": "0.00",
+    "stock": 42,
+    "featured": true,
+    "image": "",
+    "image_url": "",
+    "created_at": "2026-09-21T16:13:40.093Z"
+  }
+},
+{
+  "model": "store.medicine",
+  "pk": 2,
+  "fields": {
+    "name": "Nux Vomica 30C",
+    "category": "Digestive Care",
+    "description": "Carefully prepared homoeopathic medicine from our trusted dispensary.",
+    "price": "150.00",
+    "discount_percent": "0.00",
+    "stock": 28,
+    "featured": true,
+    "image": "",
+    "image_url": "",
+    "created_at": "2026-09-21T16:13:40.109Z"
+  }
+},
+{
+  "model": "store.medicine",
+  "pk": 3,
+  "fields": {
+    "name": "Rhus Tox 30C",
+    "category": "Joint Comfort",
+    "description": "Carefully prepared homoeopathic medicine from our trusted dispensary.",
+    "price": "210.00",
+    "discount_percent": "0.00",
+    "stock": 18,
+    "featured": true,
+    "image": "",
+    "image_url": "",
+    "created_at": "2026-09-21T16:13:40.137Z"
+  }
+},
+{
+  "model": "store.medicine",
+  "pk": 4,
+  "fields": {
+    "name": "Kali Phos 6X",
+    "category": "Daily Wellness",
+    "description": "Carefully prepared homoeopathic medicine from our trusted dispensary.",
+    "price": "195.00",
+    "discount_percent": "0.00",
+    "stock": 35,
+    "featured": false,
+    "image": "",
+    "image_url": "",
+    "created_at": "2026-09-21T16:13:40.148Z"
+  }
+},
+{
+  "model": "store.medicine",
+  "pk": 5,
+  "fields": {
+    "name": "Aconite 30C",
+    "category": "Seasonal Care",
+    "description": "Carefully prepared homoeopathic medicine from our trusted dispensary.",
+    "price": "160.00",
+    "discount_percent": "0.00",
+    "stock": 26,
+    "featured": false,
+    "image": "",
+    "image_url": "",
+    "created_at": "2026-09-21T16:13:40.167Z"
+  }
+},
+{
+  "model": "store.order",
+  "pk": 1,
+  "fields": {
+    "customer": 2,
+    "total_amount": "330.00",
+    "status": "completed",
+    "shipping_address": "42 Neem Lane, Pune",
+    "placed_at": "2026-09-21T16:13:40.184Z"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "medicine": 1,
+    "quantity": 1,
+    "unit_price": "180.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 2,
+  "fields": {
+    "order": 1,
+    "medicine": 2,
+    "quantity": 1,
+    "unit_price": "150.00"
+  }
+},
+{
+  "model": "store.sitecontent",
+  "pk": 1,
+  "fields": {
+    "key": "about",
+    "title": "About VerdantCare",
+    "body": "VerdantCare brings thoughtful homoeopathic care, trusted remedies, and qualified consultations together in one calm place.",
+    "published": true,
+    "updated_at": "2026-09-21T17:46:53.112Z"
+  }
+},
+{
+  "model": "store.sitecontent",
+  "pk": 2,
+  "fields": {
+    "key": "contact",
+    "title": "Contact us",
+    "body": "Email care@verdantcare.local or call +91 00000 00000. Our care team is available Monday to Saturday.",
+    "published": true,
+    "updated_at": "2026-09-21T17:46:53.121Z"
+  }
+},
+{
+  "model": "store.sitecontent",
+  "pk": 3,
+  "fields": {
+    "key": "privacy",
+    "title": "Privacy policy",
+    "body": "We use your information only to provide orders, appointments, support, and notifications. Prescription files are private and access-controlled.",
+    "published": true,
+    "updated_at": "2026-09-21T17:46:53.131Z"
+  }
+},
+{
+  "model": "store.sitecontent",
+  "pk": 4,
+  "fields": {
+    "key": "terms",
+    "title": "Terms of service",
+    "body": "By using VerdantCare, you agree to provide accurate account details and use medicines only as advised by a qualified practitioner.",
+    "published": true,
+    "updated_at": "2026-09-21T17:46:53.144Z"
+  }
+},
+{
+  "model": "store.sitecontent",
+  "pk": 5,
+  "fields": {
+    "key": "shipping-returns",
+    "title": "Shipping & returns",
+    "body": "Orders are packed with care and dispatched after payment confirmation. Contact support for damaged, incorrect, or missing items.",
+    "published": true,
+    "updated_at": "2026-09-21T17:46:53.153Z"
+  }
+},
+{
+  "model": "store.faq",
+  "pk": 1,
+  "fields": {
+    "question": "How quickly will my order arrive?",
+    "answer": "Most local orders arrive within 2 to 5 working days.",
+    "published": true,
+    "sort_order": 0
+  }
+},
+{
+  "model": "store.appointment",
+  "pk": 1,
+  "fields": {
+    "customer": 2,
+    "doctor": 1,
+    "appointment_date": "2026-09-23",
+    "appointment_time": "10:30:00",
+    "reason": "Seasonal wellness consultation",
+    "status": "confirmed",
+    "created_at": "2026-09-21T16:13:40.221Z"
+  }
+},
+{
+  "model": "store.notificationpreference",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "site_enabled": true,
+    "email_enabled": true,
+    "sms_enabled": true,
+    "phone_number": ""
+  }
+},
+{
+  "model": "store.notificationpreference",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "site_enabled": true,
+    "email_enabled": true,
+    "sms_enabled": true,
+    "phone_number": ""
+  }
+},
+{
+  "model": "store.notification",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "event": "order_placed",
+    "channel": "site",
+    "title": "Order received",
+    "message": "Your order #2 has been placed successfully.",
+    "read": true,
+    "delivered": true,
+    "created_at": "2026-09-21T17:23:13.064Z"
+  }
+},
+{
+  "model": "store.notification",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "event": "order_placed",
+    "channel": "email",
+    "title": "Order received",
+    "message": "Your order #2 has been placed successfully.",
+    "read": true,
+    "delivered": true,
+    "created_at": "2026-09-21T17:23:13.087Z"
+  }
+},
+{
+  "model": "store.notification",
+  "pk": 3,
+  "fields": {
+    "user": 2,
+    "event": "order_shipped",
+    "channel": "site",
+    "title": "Order on the way",
+    "message": "Your order #2 has been shipped.",
+    "read": true,
+    "delivered": true,
+    "created_at": "2026-09-21T17:23:13.185Z"
+  }
+},
+{
+  "model": "store.notification",
+  "pk": 4,
+  "fields": {
+    "user": 2,
+    "event": "order_shipped",
+    "channel": "email",
+    "title": "Order on the way",
+    "message": "Your order #2 has been shipped.",
+    "read": true,
+    "delivered": true,
+    "created_at": "2026-09-21T17:23:13.210Z"
+  }
+},
+{
+  "model": "store.notification",
+  "pk": 5,
+  "fields": {
+    "user": 2,
+    "event": "appointment_booked",
+    "channel": "site",
+    "title": "Appointment request received",
+    "message": "Your appointment with Dr. Ananya Mehta has been booked.",
+    "read": true,
+    "delivered": true,
+    "created_at": "2026-09-21T17:23:13.282Z"
+  }
+},
+{
+  "model": "store.notification",
+  "pk": 6,
+  "fields": {
+    "user": 2,
+    "event": "appointment_booked",
+    "channel": "email",
+    "title": "Appointment request received",
+    "message": "Your appointment with Dr. Ananya Mehta has been booked.",
+    "read": true,
+    "delivered": true,
+    "created_at": "2026-09-21T17:23:13.306Z"
+  }
+},
+{
+  "model": "store.notification",
+  "pk": 7,
+  "fields": {
+    "user": 2,
+    "event": "appointment_rescheduled",
+    "channel": "site",
+    "title": "Appointment rescheduled",
+    "message": "Your appointment with Dr. Ananya Mehta is now 24 Sep 2026 at 11:00 AM.",
+    "read": true,
+    "delivered": true,
+    "created_at": "2026-09-21T17:23:13.370Z"
+  }
+},
+{
+  "model": "store.notification",
+  "pk": 8,
+  "fields": {
+    "user": 2,
+    "event": "appointment_rescheduled",
+    "channel": "email",
+    "title": "Appointment rescheduled",
+    "message": "Your appointment with Dr. Ananya Mehta is now 24 Sep 2026 at 11:00 AM.",
+    "read": true,
+    "delivered": true,
+    "created_at": "2026-09-21T17:23:13.397Z"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ghQt33uIhgZGCLkqExZVpD$/me/X0+r6Fe7muEhhwmgcG2ntXGrWrdyIaRG3TJbx9g=",
+    "last_login": "2026-09-21T17:32:53.523Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@verdantcare.local",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-09-21T16:13:33.760Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$4AkDpEQncwu1olofMifSsn$rWpYSGwQYNNlvnqn8y1h9266UX+i9xKPNVg+zzqm5ZY=",
+    "last_login": "2026-09-21T17:29:00.646Z",
+    "is_superuser": false,
+    "username": "maya",
+    "first_name": "Maya",
+    "last_name": "Sharma",
+    "email": "maya@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-21T16:13:37.108Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

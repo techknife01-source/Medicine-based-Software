@@ -1,0 +1,12 @@
+{% extends 'manage_base.html' %}
+{% block title %}Review moderation | VerdantCare{% endblock %}
+{% block management_content %}
+<div class="management-heading"><div><p class="eyebrow">Customer voice</p><h1>Review moderation</h1><p class="muted">Approve helpful feedback before it appears on the storefront.</p></div></div>
+<div class="filter-tabs"><a class="{% if status == 'pending' %}active{% endif %}" href="?status=pending">Pending</a><a class="{% if status == 'approved' %}active{% endif %}" href="?status=approved">Approved</a><a class="{% if status == 'all' %}active{% endif %}" href="?status=all">All reviews</a></div>
+<div class="review-moderation-list">
+{% for review in reviews %}
+<article class="review-moderation-card"><div class="review-rating">{{ review.rating }}<span>/5</span></div><div class="review-content"><h2>{{ review.medicine.name }}</h2><p class="muted">by {{ review.customer.get_full_name|default:review.customer.username }} · {{ review.created_at|date:'d M Y' }}</p><p>“{{ review.comment }}”</p></div><div class="review-actions"><form method="post">{% csrf_token %}<input type="hidden" name="review_id" value="{{ review.id }}">{% if not review.approved %}<button class="button button-dark small" name="action" value="approve" type="submit">Approve</button>{% endif %}<button class="danger-link" name="action" value="reject" type="submit">{% if review.approved %}Remove{% else %}Reject{% endif %}</button></form></div></article>
+{% empty %}<p class="empty">No reviews in this queue.</p>
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/management.css' %}"><link rel="stylesheet" href="{% static 'css/reports.css' %}">{% endblock %}
+{% block content %}
+<div class="management-shell">
+  <aside class="management-nav"><p class="eyebrow">Operations</p><h2>Management</h2><a href="{% url 'dashboard' %}">Overview</a><a href="{% url 'reports' %}">Reports</a><a href="{% url 'medicine_management' %}">Medicines</a><a href="{% url 'doctor_management' %}">Doctors & slots</a><a href="{% url 'appointment_management' %}">Appointments</a><a href="{% url 'customer_management' %}">Customers</a><a href="{% url 'review_management' %}">Review moderation</a><a href="{% url 'coupon_management' %}">Offers & coupons</a><a href="{% url 'website_management' %}">Website content</a></aside>
+  <section class="management-content">{% block management_content %}{% endblock %}</section>
+</div>
+{% endblock %}

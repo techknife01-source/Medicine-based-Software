@@ -1,0 +1,30 @@
+/* VerdantCare motion layer */
+@keyframes page-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes soft-float{0%,100%{transform:translate3d(0,0,0) rotate(5deg)}50%{transform:translate3d(0,-12px,0) rotate(7deg)}}
+@keyframes leaf-sway{0%,100%{transform:rotate(42deg)}50%{transform:rotate(51deg) translateY(-5px)}}
+@keyframes leaf-sway-reverse{0%,100%{transform:rotate(140deg)}50%{transform:rotate(129deg) translateY(-5px)}}
+@keyframes sun-breathe{0%,100%{transform:scale(1);opacity:.78}50%{transform:scale(1.06);opacity:.9}}
+@keyframes note-pulse{0%,100%{transform:rotate(10deg) scale(1)}50%{transform:rotate(7deg) scale(1.05)}}
+@keyframes button-shimmer{0%{transform:translateX(-130%)}45%,100%{transform:translateX(130%)}}
+@keyframes line-grow{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}
+@keyframes notification-in{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+
+body{animation:page-in .7s cubic-bezier(.22,.61,.36,1) both}
+.site-header{animation:page-in .55s .05s both}
+.hero-copy>*{animation:page-in .75s both}
+.hero-copy .eyebrow{animation-delay:.12s}.hero-copy h1{animation-delay:.2s}.hero-copy .hero-text{animation-delay:.28s}.hero-copy .hero-actions{animation-delay:.36s}
+.hero-art{animation:page-in .9s .18s both}
+.sun{animation:sun-breathe 7s ease-in-out infinite}.bottle{animation:soft-float 5s ease-in-out infinite}.leaf-one{animation:leaf-sway 4s ease-in-out infinite}.leaf-two{animation:leaf-sway-reverse 4.8s ease-in-out infinite}.hero-note{animation:note-pulse 4.2s ease-in-out infinite}
+.trust-strip span{display:inline-block;animation:page-in .6s both}.trust-strip span:nth-child(2){animation-delay:.12s}.trust-strip span:nth-child(3){animation-delay:.24s}
+.section-heading,.page-intro>*{animation:page-in .7s .16s both}
+.medicine-card,.doctor-card,.appointment-row,.panel,.management-doctor,.management-table,.form-panel,.appointment-management-row,.review-moderation-card,.report-panel,.report-kpis>div,.notification-card{animation:page-in .65s both;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.medicine-card:nth-child(2),.doctor-card:nth-child(2),.report-panel:nth-child(2),.report-kpis>div:nth-child(2){animation-delay:.08s}.medicine-card:nth-child(3),.doctor-card:nth-child(3),.report-panel:nth-child(3),.report-kpis>div:nth-child(3){animation-delay:.16s}.medicine-card:nth-child(4),.report-panel:nth-child(4),.report-kpis>div:nth-child(4){animation-delay:.24s}.report-kpis>div:nth-child(5){animation-delay:.32s}
+.medicine-card:hover,.doctor-card:hover,.management-doctor:hover,.report-panel:hover{transform:translateY(-6px);box-shadow:0 16px 30px rgba(33,77,59,.1);border-color:#b8cdb6}
+.medicine-visual{overflow:hidden;transition:background .35s ease}.medicine-card:hover .medicine-visual{background:#d2e4cd}.medicine-visual img{transition:transform .55s cubic-bezier(.22,.61,.36,1)}.medicine-card:hover .medicine-visual img{transform:scale(1.06)}
+.button{position:relative;overflow:hidden;isolation:isolate;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}.button:after{content:"";position:absolute;inset:0 auto 0 0;width:45%;background:rgba(255,255,255,.18);transform:translateX(-130%) skewX(-18deg);z-index:-1}.button:hover{transform:translateY(-3px);box-shadow:0 9px 18px rgba(33,77,59,.18)}.button:hover:after{animation:button-shimmer .8s ease}.button:active{transform:translateY(-1px) scale(.98)}
+.text-link{transition:color .25s ease}.text-link:hover{color:var(--coral)}.text-link:after{content:"";display:block;height:1px;background:currentColor;transform:scaleX(0);transition:transform .25s ease}.text-link:hover:after{transform:scaleX(1)}
+.nav-action{transition:transform .25s ease,box-shadow .25s ease}.nav-action:hover{transform:translateY(-2px);box-shadow:0 7px 15px rgba(33,77,59,.18)}
+.appointment-band{position:relative;overflow:hidden}.appointment-band:after{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(255,255,255,.14);border-radius:50%;right:-80px;top:-100px;animation:sun-breathe 8s ease-in-out infinite}.status{transition:transform .2s ease}.status:hover{transform:scale(1.05)}
+.messages{animation:notification-in .45s ease both}.management-nav a{transition:color .2s ease,padding-left .2s ease}.management-nav a:before{content:"";display:inline-block;width:0;height:1px;background:var(--coral);vertical-align:middle;margin-right:0;transition:width .2s ease,margin-right .2s ease}.management-nav a:hover:before{width:12px;margin-right:5px}
+.report-tabs a,.filter-tabs a{transition:transform .2s ease,background .2s ease,color .2s ease}.report-tabs a:hover,.filter-tabs a:hover{transform:translateY(-2px)}.report-row:not(.report-header){animation:page-in .45s both}.report-row:nth-child(3){animation-delay:.06s}.report-row:nth-child(4){animation-delay:.12s}.report-row:nth-child(5){animation-delay:.18s}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.hero-copy>*{animation-delay:0!important}}

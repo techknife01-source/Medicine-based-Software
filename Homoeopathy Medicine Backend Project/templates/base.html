@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}VerdantCare{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+  <link rel="stylesheet" href="{% static 'css/notifications.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cms.css' %}">
+  <link rel="stylesheet" href="{% static 'css/motion.css' %}">
+  <link rel="stylesheet" href="{% static 'css/design.css' %}">
+  <link rel="stylesheet" href="{% static 'css/showcase.css' %}">
+  <link rel="stylesheet" href="{% static 'css/notification-page.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="{% url 'home' %}"><span class="brand-mark">V</span><span>Verdant<span>Care</span></span></a>
+  <nav>
+    <a href="{% url 'medicine_list' %}">Medicines</a>
+    <a href="{% url 'doctor_list' %}">Doctors</a>
+    {% if user.is_authenticated %}<a href="{% url 'appointment_list' %}">My appointments</a><a href="{% url 'notification_list' %}">Notifications{% if user.notifications.all|length %} <sup>{{ user.notifications.all|length }}</sup>{% endif %}</a>{% endif %}
+    {% if user.is_staff %}<a href="{% url 'medicine_management' %}">Manage</a><a class="nav-action" href="{% url 'dashboard' %}">Dashboard</a>{% else %}<a class="nav-action" href="/admin/login/">Staff login</a>{% endif %}
+  </nav>
+</header>
+{% if messages %}<div class="messages">{% for message in messages %}<div class="message">{{ message }}</div>{% endfor %}</div>{% endif %}
+<main>{% block content %}{% endblock %}</main>
+<footer><span>VerdantCare Homoeopathy</span><span><a href="{% url 'faq_page' %}">FAQ</a> · <a href="{% url 'content_page' 'privacy' %}">Privacy</a> · <a href="{% url 'content_page' 'terms' %}">Terms</a> · <a href="{% url 'content_page' 'shipping-returns' %}">Shipping & returns</a></span></footer>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{% extends 'manage_base.html' %}
+{% block title %}Manage customers | VerdantCare{% endblock %}
+{% block management_content %}
+<div class="management-heading"><div><p class="eyebrow">Customer care</p><h1>Customers</h1><p class="muted">Search accounts, manage access and review customer history.</p></div></div>
+<div class="toolbar"><form><input name="q" value="{{ query }}" placeholder="Search name, username or email"><button class="button button-soft" type="submit">Search</button></form><span>{{ customers|length }} customers</span></div>
+<div class="management-table customer-table"><div class="table-heading"><span>Customer</span><span>Orders</span><span>Appointments</span><span>Access</span></div>{% for customer in customers %}<div class="management-row"><div class="item-identity"><span class="item-thumb customer-thumb">{{ customer.username|slice:':1'|upper }}</span><span><strong>{{ customer.get_full_name|default:customer.username }}</strong><small>@{{ customer.username }} · {{ customer.email|default:'No email' }}</small></span></div><span>{{ customer.orders.count }}</span><span>{{ customer.appointments.count }}</span><span class="row-actions"><a href="{% url 'customer_detail' customer.id %}">View history</a><form method="post" action="{% url 'customer_toggle' customer.id %}">{% csrf_token %}<button type="submit" class="{% if customer.is_active %}danger-link{% endif %}">{% if customer.is_active %}Deactivate{% else %}Activate{% endif %}</button></form></span></div>{% empty %}<p class="empty">No customers found.</p>{% endfor %}</div>
+{% endblock %}
