@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Addresses</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f1f9f3;
+            color: #26352a;
+            padding: 40px 20px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        /* Header */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            gap: 20px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .page-icon {
+            width: 55px;
+            height: 55px;
+            background: #dff3e3;
+            color: #2e8b57;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+        }
+
+        .page-header h1 {
+            color: #245c3a;
+            font-size: 30px;
+            margin-bottom: 4px;
+        }
+
+        .page-header p {
+            color: #718078;
+            font-size: 14px;
+        }
+
+        /* Add Address Button */
+        .add-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #4f9d69;
+            color: white;
+            padding: 12px 18px;
+            text-decoration: none;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.25s;
+            white-space: nowrap;
+        }
+
+        .add-btn:hover {
+            background: #3f8758;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(63, 135, 88, 0.22);
+        }
+
+        /* Address List */
+        .address-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        /* Address Card */
+        .address-card {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #dcefe0;
+            border-radius: 15px;
+            padding: 24px;
+            box-shadow: 0 7px 25px rgba(52, 111, 70, 0.08);
+            transition: 0.25s;
+        }
+
+        .address-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(52, 111, 70, 0.12);
+        }
+
+        /* Card Header */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e6f1e8;
+        }
+
+        .name-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-icon {
+            width: 38px;
+            height: 38px;
+            background: #e8f6eb;
+            color: #398052;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .address-card h3 {
+            color: #285f3e;
+            font-size: 18px;
+        }
+
+        /* Address Details */
+        .details {
+            color: #59665e;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .details p {
+            margin-bottom: 8px;
+        }
+
+        .mobile {
+            color: #4b6253;
+        }
+
+        .mobile strong {
+            color: #315f42;
+        }
+
+        .location {
+            background: #f6fbf7;
+            border-radius: 9px;
+            padding: 12px 14px;
+            margin-top: 10px;
+            color: #4e5e53;
+        }
+
+        /* Buttons */
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .edit {
+            background: #e5f5e9;
+            color: #327548;
+            border: 1px solid #c9e5d0;
+        }
+
+        .edit:hover {
+            background: #d7efdc;
+        }
+
+        .delete {
+            background: #fff0f0;
+            color: #c34b4b;
+            border: 1px solid #f0cccc;
+        }
+
+        .delete:hover {
+            background: #ffe2e2;
+        }
+
+        .delete-form {
+            display: inline;
+        }
+
+        /* Empty State */
+        .empty-state {
+            background: #ffffff;
+            border: 1px solid #dcefe0;
+            border-radius: 15px;
+            padding: 55px 25px;
+            text-align: center;
+            box-shadow: 0 7px 25px rgba(52, 111, 70, 0.07);
+        }
+
+        .empty-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #e8f6eb;
+            color: #4f9d69;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .empty-state h2 {
+            color: #315f42;
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            color: #7a877f;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* Security Note */
+        .security-note {
+            margin-top: 22px;
+            padding: 13px;
+            background: #eaf6ed;
+            border-radius: 9px;
+            color: #607467;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 700px) {
+
+            body {
+                padding: 25px 12px;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .header-left {
+                align-items: flex-start;
+            }
+
+            .page-header h1 {
+                font-size: 25px;
+            }
+
+            .add-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .address-card {
+                padding: 20px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .delete-form {
+                width: 100%;
+            }
+
+            .card-header {
+                align-items: flex-start;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Page Header -->
+    <div class="page-header">
+
+        <div class="header-left">
+
+            <div class="page-icon">
+                📍
+            </div>
+
+            <div>
+                <h1>Manage Addresses</h1>
+                <p>View and manage your saved delivery addresses.</p>
+            </div>
+
+        </div>
+
+        <a
+            href="{{ url_for('add_address') }}"
+            class="add-btn"
+        >
+            ＋ Add New Address
+        </a>
+
+    </div>
+
+
+    {% if addresses %}
+
+    <!-- Address List -->
+    <div class="address-list">
+
+        {% for address in addresses %}
+
+        <div class="address-card">
+
+            <!-- Card Header -->
+            <div class="card-header">
+
+                <div class="name-section">
+
+                    <div class="user-icon">
+                        👤
+                    </div>
+
+                    <h3>
+                        {{ address.full_name }}
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <!-- Address Details -->
+            <div class="details">
+
+                <p class="mobile">
+                    <strong>📞 Mobile:</strong>
+                    {{ address.mobile }}
+                </p>
+
+                <div class="location">
+
+                    📍
+                    {{ address.address }}<br>
+
+                    {{ address.city }},
+                    {{ address.state }}
+                    -
+                    {{ address.pincode }}
+
+                </div>
+
+            </div>
+
+
+            <!-- Actions -->
+            <div class="actions">
+
+                <a
+                    href="{{ url_for('edit_address', address_id=address.id) }}"
+                    class="btn edit"
+                >
+                    ✎ Edit Address
+                </a>
+
+
+                <form
+                    action="{{ url_for('delete_address', address_id=address.id) }}"
+                    method="POST"
+                    class="delete-form"
+                    onsubmit="return confirm('Are you sure you want to delete this address?');"
+                >
+
+                    <button
+                        type="submit"
+                        class="btn delete"
+                    >
+                        🗑 Delete
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <!-- Security Note -->
+    <div class="security-note">
+        🔒 Your saved addresses are securely stored and used only for order delivery.
+    </div>
+
+
+    {% else %}
+
+    <!-- Empty State -->
+    <div class="empty-state">
+
+        <div class="empty-icon">
+            📍
+        </div>
+
+        <h2>No Addresses Saved</h2>
+
+        <p>
+            You haven't added a delivery address yet.
+        </p>
+
+        <a
+            href="{{ url_for('add_address') }}"
+            class="add-btn"
+        >
+            ＋ Add Your First Address
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
