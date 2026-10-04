@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Address</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f1f9f3;
+            padding: 40px 20px;
+            color: #26352a;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .page-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 12px;
+            background: #dff3e3;
+            color: #2e8b57;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+        }
+
+        .page-header h1 {
+            font-size: 30px;
+            color: #245c3a;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #718078;
+            font-size: 15px;
+        }
+
+        /* Card */
+        .address-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 35px;
+            border: 1px solid #dcefe0;
+            box-shadow: 0 10px 35px rgba(52, 111, 70, 0.10);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c7047;
+            margin-bottom: 22px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e4f1e6;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 18px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #35443a;
+            margin-bottom: 8px;
+        }
+
+        .required {
+            color: #e05252;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #cfe2d3;
+            border-radius: 9px;
+            background: #fbfefb;
+            color: #26352a;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #63ad7b;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(99, 173, 123, 0.15);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #9aa9a0;
+        }
+
+        textarea {
+            min-height: 105px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .button-area {
+            display: flex;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .update-btn {
+            flex: 1;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 9px;
+            background: #4f9d69;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .update-btn:hover {
+            background: #3f8758;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(63, 135, 88, 0.25);
+        }
+
+        .back-btn {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 9px;
+            border: 1px solid #bcd8c3;
+            background: #f5fbf6;
+            color: #36764c;
+            text-align: center;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: #e7f5ea;
+            border-color: #91c49d;
+        }
+
+        /* Information Box */
+        .info-box {
+            margin-top: 20px;
+            padding: 13px 15px;
+            background: #f0f8f2;
+            border-radius: 9px;
+            color: #607467;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            body {
+                padding: 25px 12px;
+            }
+
+            .address-card {
+                padding: 22px;
+                border-radius: 14px;
+            }
+
+            .page-header h1 {
+                font-size: 25px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .button-area {
+                flex-direction: column;
+            }
+
+            .update-btn,
+            .back-btn {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="page-header">
+
+        <div class="page-icon">
+            ✎
+        </div>
+
+        <h1>Edit Address</h1>
+
+        <p>
+            Update your delivery information below.
+        </p>
+
+    </div>
+
+
+    <!-- Address Card -->
+    <div class="address-card">
+
+        <div class="section-title">
+            Delivery Address
+        </div>
+
+
+        <form method="POST">
+
+            <!-- Full Name -->
+            <div class="form-group">
+
+                <label>
+                    Full Name <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    name="full_name"
+                    value="{{ address.full_name }}"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Mobile Number -->
+            <div class="form-group">
+
+                <label>
+                    Mobile Number <span class="required">*</span>
+                </label>
+
+                <input
+                    type="tel"
+                    name="mobile"
+                    value="{{ address.mobile }}"
+                    placeholder="Enter 10-digit mobile number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    autocomplete="tel"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Address -->
+            <div class="form-group">
+
+                <label>
+                    Address <span class="required">*</span>
+                </label>
+
+                <textarea
+                    name="address"
+                    placeholder="House No., Street, Area, Landmark"
+                    autocomplete="street-address"
+                    required
+                >{{ address.address }}</textarea>
+
+            </div>
+
+
+            <!-- City + State -->
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>
+                        City <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        name="city"
+                        value="{{ address.city }}"
+                        placeholder="Enter city"
+                        autocomplete="address-level2"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        State <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        name="state"
+                        value="{{ address.state }}"
+                        placeholder="Enter state"
+                        autocomplete="address-level1"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PIN Code -->
+            <div class="form-group">
+
+                <label>
+                    PIN Code <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    name="pincode"
+                    value="{{ address.pincode }}"
+                    placeholder="Enter 6-digit PIN code"
+                    pattern="[0-9]{6}"
+                    maxlength="6"
+                    autocomplete="postal-code"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Buttons -->
+            <div class="button-area">
+
+                <button type="submit" class="update-btn">
+                    ✓ Update Address
+                </button>
+
+                <a
+                    href="{{ url_for('manage_address') }}"
+                    class="back-btn"
+                >
+                    ← Back to Addresses
+                </a>
+
+            </div>
+
+
+            <!-- Information -->
+            <div class="info-box">
+                🔒 Your updated address will be securely saved to your account.
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
