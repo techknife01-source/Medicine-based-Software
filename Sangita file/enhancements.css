@@ -1,0 +1,456 @@
+:root {
+  --green: #466b50;
+  --green-dark: #304c39;
+  --paper: #fffefa;
+  --line: #e7e9df;
+  --sans: "Segoe UI", Arial, sans-serif;
+  --display: "Segoe UI", Arial, sans-serif;
+}
+
+.site-header {
+  backdrop-filter: blur(16px);
+  box-shadow: 0 5px 24px #26392b08;
+}
+
+.hero {
+  background:
+    radial-gradient(ellipse at 75% 42%, #e8eddd 0, #e8eddd 16%, transparent 16.3%),
+    linear-gradient(116deg, #f3f5ec 0%, #f0f3e7 56%, #f7f5eb 100%);
+}
+
+.hero h1 {
+  max-width: 580px;
+}
+
+.hero-bottom-right {
+  left: auto;
+  right: 7%;
+}
+
+.benefit-action {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: inherit;
+  font-family: inherit;
+}
+
+.benefit-action:hover .benefit-icon {
+  background: #e9eee1;
+  transform: rotate(-8deg);
+}
+
+.benefit-icon {
+  transition: background .2s, transform .2s;
+}
+
+.benefit-arrow {
+  margin-left: auto;
+  color: #7b8d78;
+  font-size: 15px;
+  opacity: 0;
+  transform: translate(-3px, 3px);
+  transition: opacity .2s, transform .2s;
+}
+
+.benefit-action:hover .benefit-arrow,
+.benefit-action:focus-visible .benefit-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.category-tile {
+  box-shadow: 0 3px 12px #334a3210;
+}
+
+.category-tile span {
+  box-shadow: 0 3px 8px #334a320d;
+}
+
+.product-card {
+  border: 1px solid #eeefe9;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #fffefa;
+  box-shadow: 0 3px 15px #273a2c08;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+
+.product-card:hover {
+  border-color: #dce5d8;
+  box-shadow: 0 10px 24px #273a2c11;
+  transform: translateY(-2px);
+}
+
+.product-image {
+  border-radius: 0;
+  height: 212px;
+}
+
+.product-meta {
+  padding: 13px 13px 14px;
+}
+
+.product-purchase {
+  min-height: 34px;
+}
+
+.add-button {
+  min-width: 90px;
+  padding: 8px 10px;
+  border-color: #cfddcd;
+  background: #f0f4eb;
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
+}
+
+.add-button:hover {
+  border-color: #45664b;
+  transform: translateY(-1px);
+}
+
+.card-quantity {
+  height: 31px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d5e0d1;
+  border-radius: 3px;
+  background: #f3f6ef;
+  color: #45664b;
+}
+
+.card-quantity button {
+  width: 29px;
+  height: 29px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 16px;
+  transition: background .15s;
+}
+
+.card-quantity button:hover:not(:disabled) {
+  background: #e3ecdf;
+}
+
+.card-quantity button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.card-quantity span {
+  min-width: 42px;
+  text-align: center;
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.shop-controls {
+  padding: 10px;
+  border: 1px solid #edf0e9;
+  border-radius: 5px;
+  background: #fbfcf8;
+}
+
+.shop-controls select,
+.search-box,
+.stock-toggle {
+  background-color: #fffefa;
+}
+
+.search-box:focus-within,
+.shop-controls select:focus-visible,
+.stock-toggle:focus-within {
+  border-color: #91a88c;
+  box-shadow: 0 0 0 3px #718c6820;
+}
+
+.clear-filters {
+  border: 0;
+  padding: 3px 6px;
+  background: transparent;
+  color: #60755f;
+  font-size: 9px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.clear-filters:hover {
+  color: #304c39;
+}
+
+.bottom-banner {
+  background:
+    radial-gradient(ellipse at 83% 50%, #ffffff0c 0, #ffffff0c 19%, transparent 19.3%),
+    linear-gradient(112deg, #405f47 0%, #385640 66%, #4f7055 100%);
+}
+
+.banner-outline,
+.banner-flower {
+  pointer-events: none;
+}
+
+.appointment-modal {
+  position: relative;
+  width: min(840px, 100%);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  padding: 34px 38px 28px;
+  border: 1px solid #e8ece3;
+  border-radius: 7px;
+  background: #fffefa;
+  box-shadow: 0 25px 80px #101c1333;
+  transform: translateY(12px);
+  transition: transform .2s;
+}
+
+.modal-backdrop.open .appointment-modal {
+  transform: translateY(0);
+}
+
+.appointment-modal h2 {
+  margin: 9px 0 6px;
+  font: 600 26px/1.2 var(--display);
+  letter-spacing: -.05em;
+}
+
+.appointment-intro {
+  margin: 0 0 23px;
+  color: #858d84;
+  font-size: 10px;
+}
+
+.appointment-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(220px, .85fr);
+  gap: 30px;
+}
+
+.appointment-form {
+  min-width: 0;
+}
+
+.appointment-form .form-field select,
+.appointment-form .form-field input {
+  display: block;
+  width: 100%;
+  height: 39px;
+  margin-top: 6px;
+  padding: 0 10px;
+  border: 1px solid #e5e9e1;
+  border-radius: 2px;
+  outline: none;
+  background: #fffefa;
+  color: #34443a;
+  font-size: 10px;
+}
+
+.appointment-form .form-field select:focus,
+.appointment-form .form-field input:focus {
+  border-color: #829980;
+}
+
+.slot-field > span:first-child {
+  display: block;
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.slot-button {
+  min-height: 32px;
+  border: 1px solid #e2e8de;
+  border-radius: 3px;
+  background: #fafbf7;
+  color: #526553;
+  font-size: 9px;
+  transition: background .15s, border-color .15s, color .15s;
+}
+
+.slot-button:hover,
+.slot-button.selected {
+  border-color: #527253;
+  background: #eaf0e5;
+  color: #354d39;
+}
+
+.slot-message {
+  grid-column: 1/-1;
+  margin: 4px 0 2px;
+  color: #858d84;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+.optional-note {
+  color: #a0a59d;
+  font-size: 8px;
+}
+
+.appointment-submit:disabled,
+#appointmentSubmit:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.appointment-disclaimer {
+  margin: 9px 0 0;
+  color: #949a91;
+  font-size: 8px;
+  line-height: 1.55;
+}
+
+.appointment-aside {
+  padding: 15px;
+  border: 1px solid #edf0e8;
+  border-radius: 4px;
+  background: #f8f9f3;
+}
+
+.appointment-aside > .eyebrow {
+  margin-bottom: 11px;
+}
+
+.appointment-list {
+  display: grid;
+  gap: 9px;
+  max-height: 350px;
+  overflow: auto;
+}
+
+.appointment-item {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #e9ece4;
+  border-radius: 3px;
+  background: #fffefa;
+}
+
+.appointment-date-chip {
+  width: 38px;
+  height: 42px;
+  flex: none;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  border-radius: 3px;
+  background: #eef2e7;
+  color: #48634b;
+}
+
+.appointment-date-chip b {
+  font: 600 13px var(--display);
+}
+
+.appointment-date-chip span {
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+.appointment-details {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.appointment-details > b {
+  font-size: 9px;
+}
+
+.appointment-details > span,
+.appointment-details > small {
+  color: #838b81;
+  font-size: 8px;
+  line-height: 1.45;
+}
+
+.appointment-details > small {
+  color: #61735e;
+}
+
+.cancel-appointment {
+  justify-self: start;
+  border: 0;
+  padding: 2px 0;
+  background: transparent;
+  color: #a36d5f;
+  font-size: 8px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cancel-appointment:disabled {
+  opacity: .5;
+}
+
+.appointment-empty {
+  padding: 18px 5px;
+  text-align: center;
+  color: #899187;
+}
+
+.appointment-empty > span {
+  color: #789076;
+  font-size: 20px;
+}
+
+.appointment-empty p {
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+@media (max-width: 650px) {
+  .hero-bottom-right {
+    display: none;
+  }
+
+  .product-image {
+    height: 164px;
+  }
+
+  .product-meta {
+    padding: 11px 9px 12px;
+  }
+
+  .add-button {
+    min-width: 76px;
+    padding: 7px 6px;
+    font-size: 8px;
+  }
+
+  .card-quantity button {
+    width: 25px;
+  }
+
+  .card-quantity span {
+    min-width: 35px;
+  }
+
+  .appointment-modal {
+    padding: 28px 20px 21px;
+  }
+
+  .appointment-modal h2 {
+    font-size: 22px;
+  }
+
+  .appointment-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .appointment-aside {
+    order: 2;
+  }
+
+  .slot-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

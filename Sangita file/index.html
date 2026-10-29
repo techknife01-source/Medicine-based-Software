@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7ef">
+  <meta name="description" content="A frontend-only HomoeoCare storefront preview with sample products, saved items and local demo interactions.">
+  <title>HomoeoCare — feel good, naturally</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="enhancements.css">
+  <script src="catalog.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body id="top">
+  <div class="announcement"><span>✦</span> HomoeoCare · Frontend preview <span class="announcement-end">Demo data stays in this browser</span></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="HomoeoCare home"><span class="brand-mark">h<span>✳</span></span><span class="brand-name">homoeo<span>care</span><small>WELLNESS, THOUGHTFULLY</small></span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#shop">Shop all</a><a href="#categories">Categories</a><a href="#our-promise">Our promise</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button account-button" id="accountButton" aria-label="Sign in"><span>♙</span><span class="action-label" id="accountLabel">Sign in</span></button>
+      <button class="icon-button" id="wishlistButton" aria-label="Open wishlist"><span>♡</span><span class="action-label">Saved</span><b class="count-badge" id="wishlistCount">0</b></button>
+      <button class="icon-button" id="cartButton" aria-label="Open shopping bag"><span>♧</span><span class="action-label">Bag</span><b class="count-badge" id="cartCount">0</b></button>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="tiny-spark">✳</span> YOUR WELLNESS, YOUR WAY</div>
+        <h1>A more thoughtful<br>kind of <em>wellness.</em></h1>
+        <p>Everyday homeopathy essentials, carefully chosen for the people and little moments that matter.</p>
+        <div class="hero-buttons"><a class="button button-dark" href="#shop">Explore the shop <span>↗</span></a><a class="text-link" href="#our-promise">A little about us <span>→</span></a></div>
+        <div class="hero-note"><span class="avatar-stack"><i>🌱</i><i>🤍</i><i>🌼</i></span><span>Loved by <b>2,400+</b> wellness seekers</span></div>
+      </div>
+      <div class="hero-art" aria-label="Natural homeopathy products illustration">
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        <div class="hero-leaf leaf-a">✳</div><div class="hero-leaf leaf-b">✿</div><div class="hero-leaf leaf-c">❋</div>
+        <div class="art-sun"></div>
+        <div class="hero-product hero-bottle"><span>🌿</span><b>ARNICA</b><small>mother tincture</small><i>30 ml</i></div>
+        <div class="hero-product hero-jar"><span>🌼</span><b>CALENDULA</b><small>skin ointment</small></div>
+        <div class="floating-note note-left"><span>✳</span><div><b>Carefully chosen</b><small>Just for your home</small></div></div>
+        <div class="floating-note note-right"><span>♡</span><div><b>A little more care</b><small>In every order</small></div></div>
+        <div class="art-caption">a softer kind of self-care <span>✳</span></div>
+      </div>
+      <div class="hero-bottom"><span>✳</span> Small rituals. Thoughtful choices. Everyday care.<span class="hero-bottom-right">01 — A MORE NATURAL ROUTINE</span></div>
+    </section>
+    <section class="benefits" id="our-promise">
+      <div class="benefit"><span class="benefit-icon">✿</span><div><b>Thoughtfully sourced</b><small>Trusted names, carefully selected</small></div></div>
+      <div class="benefit"><span class="benefit-icon">♡</span><div><b>Care in every detail</b><small>From our shelves to your doorstep</small></div></div>
+      <div class="benefit"><span class="benefit-icon">⌂</span><div><b>Here for your home</b><small>Everyday essentials, all in one place</small></div></div>
+      <button class="benefit benefit-action" id="bookAppointment"><span class="benefit-icon">✳</span><div><b>Need a little guidance?</b><small>Book time with a homeopathy doctor</small></div><span class="benefit-arrow">↗</span></button>
+    </section>
+    <section class="category-section" id="categories">
+      <div class="section-heading"><div><div class="eyebrow">A GOOD PLACE TO BEGIN</div><h2>Find your kind of care.</h2></div><a class="text-link" href="#shop">View all categories <span>→</span></a></div>
+      <div class="category-row" id="categoryRow"></div>
+    </section>
+    <section class="shop-section" id="shop">
+      <div class="shop-heading"><div><div class="eyebrow"><span class="tiny-spark">✳</span> THE HOMOEOPATHY EDIT</div><h2>Little things for <em>feeling good.</em></h2><p>Thoughtful everyday essentials, right when you need them.</p></div><div class="catalog-note">✦ <span>18 thoughtful picks<br><small>and counting</small></span></div></div>
+      <div class="shop-controls">
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search remedies, brands & more"><kbd>Ctrl K</kbd></label>
+        <select id="brandFilter" aria-label="Filter by brand"><option value="All">All brands</option></select>
+        <select id="priceFilter" aria-label="Filter by maximum price"><option value="">Any price</option><option value="100">Under ₹100</option><option value="200">Under ₹200</option><option value="400">Under ₹400</option></select>
+        <select id="ratingFilter" aria-label="Filter by minimum rating"><option value="">Any rating</option><option value="4.5">4.5+ stars</option><option value="4">4+ stars</option></select>
+        <label class="stock-toggle"><input id="stockFilter" type="checkbox"><span>In stock</span></label>
+        <select id="sortFilter" aria-label="Sort products"><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="rating">Top rated</option><option value="newest">Recently added</option></select>
+      </div>
+      <div class="active-category" id="activeCategory" hidden><span id="activeCategoryName"></span><button id="clearCategory" aria-label="Clear category filter">×</button></div>
+      <div class="results-line"><span id="resultCount">Finding your favourites…</span><button class="clear-filters" id="clearAllFilters" hidden>Clear all filters ×</button><span>Made for your everyday shelf <i>✳</i></span></div>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden><span>🌱</span><h3>No little helpers found</h3><p>Try a different search or clear a filter to see more.</p><button class="button button-dark" id="clearFilters">Clear filters</button></div>
+    </section>
+    <section class="bottom-banner"><span class="banner-flower">✳</span><div><div class="eyebrow">A LITTLE HELP, WHEN YOU NEED IT</div><h2>Good care starts with<br>a good conversation.</h2><p>Preview sample doctors and available times. Demo bookings stay in this browser only.</p></div><button class="button button-light" id="bookAppointmentBanner">Preview an appointment <span>↗</span></button><span class="banner-outline">✿</span></section>
+  </main>
+  <footer class="site-footer"><a class="brand footer-brand" href="#top"><span class="brand-mark">h<span>✳</span></span><span class="brand-name">homoeo<span>care</span><small>WELLNESS, THOUGHTFULLY</small></span></a><p>Frontend preview · Sample products and demo interactions.</p><span>© 2026 HomoeoCare · Made with care <span class="footer-heart">♥</span></span></footer>
+
+  <div class="scrim" id="scrim"></div>
+  <aside class="side-panel" id="sidePanel" aria-label="Your bag" aria-hidden="true" inert>
+    <div class="panel-header"><div><div class="eyebrow" id="panelEyebrow">YOUR LITTLE FINDS</div><h2 id="panelTitle">Your bag <span id="panelCount"></span></h2></div><button class="close-button" id="panelClose" aria-label="Close panel">×</button></div>
+    <div class="panel-content" id="panelContent"></div>
+    <div class="panel-footer" id="panelFooter"></div>
+  </aside>
+  <div class="modal-backdrop" id="authBackdrop">
+    <section class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button class="close-button modal-close" id="authClose" aria-label="Close sign-in dialog">×</button>
+      <div class="auth-mark">h<span>✳</span></div><div class="eyebrow">A LITTLE MORE CARE</div><h2 id="authTitle">Welcome home.</h2><p id="authIntro">Sign in to save your favourites and keep your wellness shelf close.</p>
+      <div class="auth-tabs"><button class="auth-tab active" data-mode="login">Sign in</button><button class="auth-tab" data-mode="register">Create account</button></div>
+      <form id="authForm">
+        <label class="form-field" id="nameField" hidden>Your name<input name="name" autocomplete="name" placeholder="How should we call you?"></label>
+        <label class="form-field">Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+        <label class="form-field" id="mobileField" hidden>Mobile number<input name="mobile" type="tel" autocomplete="tel" placeholder="10-digit mobile number"></label>
+        <label class="form-field" id="passwordField">Demo password<input name="password" type="password" autocomplete="current-password" placeholder="Any text works in this preview" required></label>
+        <button class="auth-submit" id="authSubmit" type="submit">Sign in <span>→</span></button>
+        <div class="form-error" id="authError" role="alert"></div>
+      </form>
+      <div class="demo-hint">Frontend demo only. Use any email and password to preview. Nothing is sent or securely authenticated.</div>
+    </section>
+  </div>
+  <div class="modal-backdrop" id="profileBackdrop">
+    <section class="auth-modal profile-modal" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+      <button class="close-button modal-close" id="profileClose" aria-label="Close profile">×</button>
+      <div class="eyebrow">YOUR LITTLE CORNER</div><h2 id="profileTitle">Your details.</h2>
+      <form id="profileForm"><label class="form-field">Name<input name="name" required minlength="2"></label><label class="form-field">Email address<input name="email" type="email" disabled></label><label class="form-field">Mobile number<input name="mobile" type="tel" required></label><label class="form-field">Address<textarea name="address" rows="2" placeholder="Your delivery address"></textarea></label><button class="auth-submit">Save details <span>→</span></button><div class="form-error" id="profileError" role="alert"></div></form>
+      <p class="demo-hint profile-demo-note">Preview profile only. Account details are saved in this browser, not to an online account.</p>
+      <button class="signout-button" id="signOut">Sign out of your account <span>↗</span></button>
+    </section>
+  </div>
+  <div class="modal-backdrop" id="appointmentBackdrop">
+    <section class="appointment-modal" role="dialog" aria-modal="true" aria-labelledby="appointmentTitle">
+      <button class="close-button modal-close" id="appointmentClose" aria-label="Close appointment booking">×</button>
+      <div class="eyebrow"><span class="tiny-spark">✳</span> A LITTLE TIME FOR YOU</div>
+      <h2 id="appointmentTitle">Book a doctor visit.</h2>
+      <p class="appointment-intro">Choose a sample doctor and time. This demo does not contact a clinic or reserve a real appointment.</p>
+      <div class="appointment-layout">
+        <form id="appointmentForm" class="appointment-form">
+          <label class="form-field">Choose your doctor<select name="doctor" id="doctorSelect" required></select></label>
+          <label class="form-field">Choose a day<input name="date" id="appointmentDate" type="date" required></label>
+          <div class="form-field slot-field"><span>Available times</span><div class="slot-grid" id="slotGrid" aria-live="polite"></div></div>
+          <label class="form-field">Anything you'd like us to know? <span class="optional-note">Optional</span><textarea name="notes" rows="2" maxlength="500" placeholder="A short note for the clinic"></textarea></label>
+          <div class="form-error" id="appointmentError" role="alert"></div>
+          <button class="auth-submit" id="appointmentSubmit" type="submit" disabled>Choose a demo time <span>→</span></button>
+          <p class="appointment-disclaimer">Sample hours: Monday–Friday, 10 am–5 pm. Demo only; no medical advice or real booking.</p>
+        </form>
+        <aside class="appointment-aside"><div class="eyebrow">YOUR VISITS</div><div id="appointmentList" class="appointment-list"></div></aside>
+      </div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
